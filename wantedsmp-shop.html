@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WANTED SMP — Лавка охотника за головами</title>
+<meta name="description" content="Официальная лавка WANTED SMP: ранги, Битсы и кейсы. Косметика и статус — без игровых преимуществ.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&family=Bitter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#17110c;
+    --bg-panel:#1f160e;
+    --wood-dark:#2b1c11;
+    --wood-mid:#3c2717;
+    --wood-light:#54371f;
+    --paper:#ecdfb9;
+    --paper-shadow:#cbb587;
+    --paper-foxing:#b99f6b;
+    --ink:#2a1c10;
+    --ink-soft:#4a3520;
+    --gold:#d4af37;
+    --gold-deep:#9c7a20;
+    --red:#a3392a;
+    --red-deep:#7a2a1f;
+    --purple:#8a5fa8;
+    --purple-deep:#5f3f78;
+    --cream:#ede3ce;
+    --muted:#b7a688;
+    --line: rgba(237,227,206,0.14);
+    --radius-poster: 4px;
+    --shadow-deep: 0 24px 48px rgba(0,0,0,0.55);
+    --font-display:'Rye', 'Georgia', serif;
+    --font-body:'Bitter', 'Iowan Old Style', Georgia, serif;
+    --font-label:'Special Elite', 'Courier New', monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(ellipse at 20% -10%, rgba(212,175,55,0.06), transparent 45%),
+      var(--bg);
+    color:var(--cream);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header ---------- */
+  header.site{
+    position:sticky; top:0; z-index:40;
+    background:rgba(23,17,12,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+    gap:16px;
+  }
+  .logo{
+    font-family:var(--font-display);
+    font-size:26px;
+    letter-spacing:1px;
+    color:var(--gold);
+    text-decoration:none;
+    display:flex; align-items:baseline; gap:8px;
+    white-space:nowrap;
+  }
+  .logo span{
+    font-family:var(--font-label);
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:2px;
+  }
+  nav.primary{display:flex; gap:28px;}
+  nav.primary a{
+    font-family:var(--font-label);
+    font-size:13px;
+    letter-spacing:1px;
+    text-decoration:none;
+    color:var(--muted);
+    padding:6px 0;
+    border-bottom:1px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  nav.primary a:hover, nav.primary a:focus-visible{color:var(--cream); border-color:var(--gold);}
+
+  .header-actions{display:flex; align-items:center; gap:10px;}
+
+  .ip-pill{
+    display:flex; align-items:center; gap:8px;
+    font-family:var(--font-label);
+    font-size:12px;
+    color:var(--cream);
+    background:var(--bg-panel);
+    border:1px solid var(--line);
+    padding:8px 12px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:border-color .15s ease, transform .1s ease;
+  }
+  .ip-pill:hover{border-color:var(--gold);}
+  .ip-pill:active{transform:scale(0.97);}
+  .ip-pill .dot{width:6px; height:6px; border-radius:50%; background:#7fb26b; box-shadow:0 0 6px #7fb26b;}
+
+  .btn{
+    font-family:var(--font-label);
+    font-size:13px;
+    letter-spacing:0.5px;
+    text-decoration:none;
+    border-radius:3px;
+    padding:10px 18px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:transform .12s ease, box-shadow .12s ease, background .15s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-gold{
+    background:linear-gradient(180deg, #e6c667, var(--gold) 55%, var(--gold-deep));
+    color:#2a1c0c;
+    box-shadow:0 6px 0 var(--gold-deep), 0 10px 18px rgba(0,0,0,0.4);
+  }
+  .btn-gold:hover{box-shadow:0 4px 0 var(--gold-deep), 0 8px 16px rgba(0,0,0,0.45); transform:translateY(2px);}
+  .btn-outline{
+    background:transparent;
+    border-color:var(--line);
+    color:var(--cream);
+  }
+  .btn-outline:hover{border-color:var(--cream);}
+  .btn-small{padding:8px 14px; font-size:12px;}
+
+  .menu-toggle{
+    display:none;
+    background:none; border:1px solid var(--line); border-radius:4px;
+    color:var(--cream); width:40px; height:36px; cursor:pointer;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    overflow:hidden;
+    padding:96px 0 64px;
+    background:
+      repeating-linear-gradient(90deg, var(--wood-dark) 0 86px, var(--wood-mid) 86px 172px),
+      linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.55));
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.12) 0 2px, transparent 2px 5px),
+      radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    pointer-events:none;
+  }
+  .hero-inner{position:relative; text-align:center; max-width:760px; margin:0 auto;}
+  .eyebrow{
+    font-family:var(--font-label);
+    font-size:12px;
+    letter-spacing:3px;
+    color:var(--gold);
+    text-transform:uppercase;
+  }
+  .eyebrow::before, .eyebrow::after{content:"✦"; color:var(--red); margin:0 10px; font-size:10px; vertical-align:middle;}
+
+  h1.hero-title{
+    font-family:var(--font-display);
+    font-weight:400;
+    font-size:clamp(38px, 6vw, 64px);
+    line-height:1.08;
+    margin:18px 0 20px;
+    color:var(--cream);
+    text-shadow:0 3px 0 rgba(0,0,0,0.5);
+  }
+  h1.hero-title em{
+    font-style:normal;
+    color:var(--gold);
+  }
+  .hero-sub{
+    font-size:17px;
+    color:var(--muted);
+    max-width:560px;
+    margin:0 auto 34px;
+  }
+  .hero-ctas{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:56px;}
+
+  .trust-row{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:6px;
+    overflow:hidden;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .trust-item{
+    background:rgba(23,17,12,0.72);
+    padding:18px 16px;
+    text-align:center;
+  }
+  .trust-item .ti-icon{margin:0 auto 8px; width:26px; height:26px; color:var(--gold);}
+  .trust-item p{
+    margin:0;
+    font-family:var(--font-label);
+    font-size:11.5px;
+    letter-spacing:0.5px;
+    color:var(--muted);
+    text-transform:uppercase;
+  }
+
+  /* ---------- Section shell ---------- */
+  section.catalog{
+    padding:88px 0;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    scroll-margin-top:84px;
+  }
+  section.catalog:nth-of-type(even){background:var(--bg-panel);}
+  .section-head{text-align:center; max-width:620px; margin:0 auto 52px;}
+  .section-head h2{
+    font-family:var(--font-display);
+    font-weight:400;
+    font-size:clamp(28px, 4vw, 40px);
+    margin:14px 0 16px;
+    color:var(--cream);
+  }
+  .section-head p{color:var(--muted); font-size:15.5px; margin:0;}
+
+  /* ---------- Wanted-poster product cards (signature element) ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:28px;
+  }
+  .grid.bits{grid-template-columns:repeat(4, 1fr);}
+  .grid.cases{grid-template-columns:repeat(3, 1fr);}
+
+  .poster{
+    position:relative;
+    background:
+      linear-gradient(160deg, rgba(0,0,0,0.05), rgba(0,0,0,0.12) 40%, rgba(0,0,0,0.04)),
+      var(--paper);
+    color:var(--ink);
+    padding:30px 22px 26px;
+    border-radius:var(--radius-poster);
+    box-shadow:var(--shadow-deep);
+    transform:rotate(var(--tilt, -1deg));
+    transition:transform .2s ease, box-shadow .2s ease;
+    display:flex;
+    flex-direction:column;
+    min-height:100%;
+  }
+  .grid > .poster:nth-child(2n){--tilt: 1.1deg;}
+  .grid > .poster:nth-child(3n){--tilt: -0.6deg;}
+  .poster:hover{transform:rotate(0deg) translateY(-6px); box-shadow:0 30px 55px rgba(0,0,0,0.6);}
+
+  .poster::before{ /* torn top edge */
+    content:"";
+    position:absolute; top:-1px; left:0; right:0; height:10px;
+    background:var(--paper);
+    clip-path:polygon(0% 100%, 4% 30%, 9% 90%, 14% 20%, 19% 80%, 24% 10%, 29% 70%, 34% 25%, 39% 95%,
+      44% 15%, 49% 75%, 54% 30%, 59% 90%, 64% 10%, 69% 65%, 74% 20%, 79% 85%, 84% 25%, 89% 95%, 94% 15%, 100% 100%);
+  }
+  .poster::after{ /* foxing / age spots */
+    content:"";
+    position:absolute; inset:0; border-radius:inherit;
+    background:
+      radial-gradient(circle at 14% 82%, rgba(140,110,50,0.18), transparent 9%),
+      radial-gradient(circle at 86% 20%, rgba(140,110,50,0.14), transparent 8%),
+      radial-gradient(circle at 76% 88%, rgba(140,110,50,0.12), transparent 7%);
+    pointer-events:none;
+  }
+  .nail{
+    position:absolute; top:-9px; left:50%; transform:translateX(-50%);
+    width:16px; height:16px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #d8d0c0, #6b6357 60%, #35312a);
+    box-shadow:0 3px 6px rgba(0,0,0,0.55);
+    z-index:2;
+  }
+
+  .poster-eyebrow{
+    font-family:var(--font-label);
+    font-size:10.5px;
+    letter-spacing:2px;
+    color:var(--red-deep);
+    text-align:center;
+    margin-bottom:6px;
+  }
+  .poster-rule{
+    height:2px;
+    background:
+      repeating-linear-gradient(90deg, var(--ink) 0 6px, transparent 6px 10px);
+    opacity:0.35;
+    margin:0 auto 14px;
+    width:70%;
+  }
+  .poster-emblem{
+    width:64px; height:64px;
+    margin:0 auto 14px;
+    border:2px solid var(--ink);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(42,28,16,0.05);
+  }
+  .poster-emblem svg{width:32px; height:32px; stroke:var(--ink); fill:none;}
+
+  .poster-name{
+    font-family:var(--font-display);
+    font-size:24px;
+    text-align:center;
+    margin:0 0 4px;
+    color:var(--ink);
+  }
+  .poster-tagline{
+    text-align:center;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+    font-style:italic;
+  }
+
+  .poster-perks{
+    list-style:none; margin:0 0 20px; padding:0;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    flex:1;
+  }
+  .poster-perks li{
+    display:flex; gap:8px; align-items:flex-start;
+    padding:6px 0;
+    border-top:1px dashed rgba(42,28,16,0.2);
+  }
+  .poster-perks li:first-child{border-top:none;}
+  .poster-perks li::before{
+    content:"›";
+    color:var(--red-deep);
+    font-weight:700;
+    line-height:1.4;
+  }
+
+  .stamp{
+    align-self:center;
+    display:inline-flex;
+    flex-direction:column;
+    align-items:center;
+    border:2px solid var(--red-deep);
+    color:var(--red-deep);
+    border-radius:6px;
+    padding:8px 18px;
+    transform:rotate(-3deg);
+    margin-bottom:16px;
+    position:relative;
+  }
+  .stamp span.label{font-family:var(--font-label); font-size:9.5px; letter-spacing:2px;}
+  .stamp span.amount{font-family:var(--font-display); font-size:22px; line-height:1.1;}
+
+  .poster-cta{
+    width:100%;
+    justify-content:center;
+    background:linear-gradient(180deg, var(--red) , var(--red-deep));
+    color:var(--cream);
+    box-shadow:0 5px 0 #5c2015, 0 8px 14px rgba(0,0,0,0.35);
+    border:none;
+    font-family:var(--font-label);
+  }
+  .poster-cta:hover{box-shadow:0 3px 0 #5c2015, 0 6px 12px rgba(0,0,0,0.4); transform:translateY(2px);}
+
+  /* Bits variant — coin pouch tone */
+  .poster.bits .stamp{border-color:var(--purple-deep); color:var(--purple-deep);}
+  .poster.bits .poster-cta{
+    background:linear-gradient(180deg, var(--purple), var(--purple-deep));
+    box-shadow:0 5px 0 #432b57, 0 8px 14px rgba(0,0,0,0.35);
+  }
+  .poster.bits .poster-cta:hover{box-shadow:0 3px 0 #432b57, 0 6px 12px rgba(0,0,0,0.4);}
+  .poster.bits .poster-eyebrow{color:var(--purple-deep);}
+  .bonus-tag{
+    position:absolute; top:14px; right:-8px;
+    background:var(--gold);
+    color:#2a1c0c;
+    font-family:var(--font-label);
+    font-size:10px;
+    letter-spacing:1px;
+    padding:4px 10px 4px 14px;
+    border-radius:2px 0 0 2px;
+    box-shadow:0 3px 6px rgba(0,0,0,0.35);
+  }
+
+  /* Cases teaser cards */
+  .poster.case{align-items:center; text-align:center;}
+  .poster.case .poster-perks{list-style:none; padding:0; text-align:left;}
+  .crate-odds{
+    display:flex; justify-content:space-between;
+    font-family:var(--font-label);
+    font-size:10.5px;
+    color:var(--ink-soft);
+    border-top:1px dashed rgba(42,28,16,0.25);
+    padding-top:10px;
+    margin-top:auto;
+  }
+
+  .cases-note{
+    text-align:center;
+    max-width:560px;
+    margin:36px auto 0;
+    font-size:13.5px;
+    color:var(--muted);
+    font-family:var(--font-label);
+  }
+  .cases-note strong{color:var(--gold);}
+
+  /* ---------- Footer ---------- */
+  footer.site{
+    background:var(--wood-dark);
+    padding:64px 0 28px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--line);
+  }
+  .footer-grid h4{
+    font-family:var(--font-label);
+    font-size:12px;
+    letter-spacing:2px;
+    color:var(--gold);
+    margin:0 0 16px;
+    text-transform:uppercase;
+  }
+  .footer-grid p{color:var(--muted); font-size:14px; margin:0 0 14px;}
+  .footer-links{list-style:none; padding:0; margin:0;}
+  .footer-links li{margin-bottom:10px;}
+  .footer-links a{text-decoration:none; color:var(--muted); font-size:14px; transition:color .15s ease;}
+  .footer-links a:hover{color:var(--cream);}
+  .footer-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    padding-top:24px;
+    font-family:var(--font-label);
+    font-size:11.5px;
+    color:var(--muted);
+    letter-spacing:0.5px;
+  }
+
+  /* ---------- Modal (checkout placeholder) ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(10,7,4,0.72);
+    display:none; align-items:center; justify-content:center;
+    z-index:100; padding:20px;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal{
+    background:var(--paper);
+    color:var(--ink);
+    max-width:420px; width:100%;
+    border-radius:6px;
+    padding:30px 26px 26px;
+    position:relative;
+    box-shadow:0 30px 70px rgba(0,0,0,0.6);
+  }
+  .modal-close{
+    position:absolute; top:14px; right:14px;
+    background:none; border:none; font-size:20px; cursor:pointer; color:var(--ink-soft);
+    line-height:1;
+  }
+  .modal h3{font-family:var(--font-display); font-size:24px; margin:6px 0 6px;}
+  .modal p{font-size:14px; color:var(--ink-soft); margin:0 0 18px;}
+  .modal .modal-price{font-family:var(--font-label); font-size:13px; color:var(--red-deep); margin-bottom:18px;}
+  .modal .btn{width:100%; justify-content:center; margin-bottom:10px;}
+
+  .toast{
+    position:fixed; bottom:26px; left:50%; transform:translate(-50%, 20px);
+    background:var(--gold); color:#2a1c0c;
+    font-family:var(--font-label); font-size:12.5px; letter-spacing:0.5px;
+    padding:12px 20px; border-radius:4px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.4);
+    opacity:0; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+    z-index:200;
+  }
+  .toast.show{opacity:1; transform:translate(-50%, 0);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .grid, .grid.bits{grid-template-columns:repeat(2, 1fr);}
+    .grid.cases{grid-template-columns:repeat(2, 1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width: 720px){
+    nav.primary{
+      position:fixed; top:69px; left:0; right:0; bottom:0;
+      background:var(--bg); border-top:1px solid var(--line);
+      flex-direction:column; padding:24px 28px; gap:0;
+      transform:translateY(-110%); transition:transform .2s ease;
+      z-index:35;
+    }
+    nav.primary.open{transform:translateY(0);}
+    nav.primary a{padding:14px 0; border-bottom:1px solid var(--line); font-size:15px;}
+    .menu-toggle{display:block;}
+    .header-actions .btn-outline{display:none;}
+    .trust-row{grid-template-columns:1fr;}
+    .grid, .grid.bits, .grid.cases{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr; gap:28px;}
+    .hero{padding:64px 0 48px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="logo" href="#top">WANTED<span>SMP · ЛАВКА</span></a>
+    <nav class="primary" id="primaryNav">
+      <a href="#ranks">Ранги</a>
+      <a href="#bits">Битсы</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#rules">Правила лавки</a>
+    </nav>
+    <div class="header-actions">
+      <button class="ip-pill" id="ipCopy" type="button" aria-label="Скопировать IP сервера">
+        <span class="dot"></span> mc.wantedmc.fun
+      </button>
+      <a class="btn btn-outline btn-small" href="https://discord.gg/" target="_blank" rel="noopener">Discord</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <p class="eyebrow">Лавка охотника за головами</p>
+      <h1 class="hero-title">Заработай репутацию.<br>Не покупай <em>победу</em>.</h1>
+      <p class="hero-sub">На WANTED SMP донат меняет то, как тебя видят — цвет ника, титул, эффекты после киллов. Кто победит в перестрелке — решают клинок, лук и голова на плечах.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-gold" href="#ranks">Смотреть ранги</a>
+        <a class="btn btn-outline" href="#bits">Пакеты Битсов</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item">
+          <svg class="ti-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.4 5.5 6 .6-4.5 4 1.3 5.9L12 16l-5.2 3 1.3-5.9-4.5-4 6-.6z"/></svg>
+          <p>Косметика ≠ сила</p>
+        </div>
+        <div class="trust-item">
+          <svg class="ti-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2 3 14h7l-1 8 11-13h-7z"/></svg>
+          <p>Выдача сразу после оплаты</p>
+        </div>
+        <div class="trust-item">
+          <svg class="ti-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="12" rx="2"/><path d="M3 11h18"/></svg>
+          <p>Карта и СБП</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= РАНГИ ================= -->
+  <section class="catalog" id="ranks">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Розыск · Ранги</p>
+        <h2>Выбери свою славу</h2>
+        <p>Ранг — статус и внешний вид: цвет ника, титул, партиклы после килла. Игрового преимущества не даёт — только репутацию в тавернах Уэста.</p>
+      </div>
+
+      <div class="grid" id="ranksGrid">
+
+        <article class="poster" data-product="Ковбой" data-price="149 ₽">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Розыск</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10" stroke-linejoin="round"/><path d="M9 20v-6h6v6"/></svg></div>
+          <h3 class="poster-name">Ковбой</h3>
+          <p class="poster-tagline">Новичок с твёрдой рукой</p>
+          <div class="stamp"><span class="label">Награда</span><span class="amount">149 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Свой цвет ника в чате и таблисте</li>
+            <li>Приоритет входа при заполненном сервере</li>
+            <li>Значок ранга в /bounty</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('Ковбой', '149 ₽')">Заявить награду</button>
+        </article>
+
+        <article class="poster" data-product="Стрелок" data-price="349 ₽">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Розыск</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><path d="M12 2 3 7l9 5 9-5-9-5Z" stroke-linejoin="round"/><path d="M3 7v10l9 5 9-5V7"/></svg></div>
+          <h3 class="poster-name">Стрелок</h3>
+          <p class="poster-tagline">Меткий и заметный</p>
+          <div class="stamp"><span class="label">Награда</span><span class="amount">349 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Всё из ранга «Ковбой»</li>
+            <li>1 набор партиклов после килла</li>
+            <li>Дополнительный слот в клане</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('Стрелок', '349 ₽')">Заявить награду</button>
+        </article>
+
+        <article class="poster" data-product="Наёмник" data-price="699 ₽">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Розыск</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6"/></svg></div>
+          <h3 class="poster-name">Наёмник</h3>
+          <p class="poster-tagline">Известен во всех салунах</p>
+          <div class="stamp"><span class="label">Награда</span><span class="amount">699 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Всё из ранга «Стрелок»</li>
+            <li>Доступ ко всем цветам ника и титулам</li>
+            <li>Эксклюзивный набор партиклов</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('Наёмник', '699 ₽')">Заявить награду</button>
+        </article>
+
+        <article class="poster" data-product="Легенда Запада" data-price="1490 ₽">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Розыск · Особо ценен</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><path d="M12 3l2.4 5.5 6 .6-4.5 4 1.3 5.9L12 16l-5.2 3 1.3-5.9-4.5-4 6-.6z"/></svg></div>
+          <h3 class="poster-name">Легенда Запада</h3>
+          <p class="poster-tagline">О тебе слагают баллады</p>
+          <div class="stamp"><span class="label">Награда</span><span class="amount">1490 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Всё из ранга «Наёмник»</li>
+            <li>Лимитированная косметика первой волны</li>
+            <li>Приоритетная поддержка в Discord</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('Легенда Запада', '1490 ₽')">Заявить награду</button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= БИТСЫ ================= -->
+  <section class="catalog" id="bits">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Кошелёк · Битсы</p>
+        <h2>Монеты для лавки трофеев</h2>
+        <p>Битсы тратятся в игре на кейсы и точечную косметику — набежать их боем нельзя, только через лавку. Хочешь конкретный цвет партиклов или редкий титул — начни здесь.</p>
+      </div>
+
+      <div class="grid bits">
+
+        <article class="poster bits" data-product="100 Битсов" data-price="99 ₽">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Кошелёк</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 10.5c0-1.4 1.3-2.2 3-2.2s3 .9 3 2.1c0 2.8-6 1.6-6 4.3 0 1.3 1.3 2.1 3 2.1s3-.8 3-2.1"/></svg></div>
+          <h3 class="poster-name">Разведчик</h3>
+          <p class="poster-tagline">100 Битсов</p>
+          <div class="stamp"><span class="label">Цена</span><span class="amount">99 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Хватит на пробное открытие кейса</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('100 Битсов', '99 ₽')">Купить Битсы</button>
+        </article>
+
+        <article class="poster bits" data-product="500 Битсов" data-price="449 ₽">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Кошелёк</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 10.5c0-1.4 1.3-2.2 3-2.2s3 .9 3 2.1c0 2.8-6 1.6-6 4.3 0 1.3 1.3 2.1 3 2.1s3-.8 3-2.1"/></svg></div>
+          <h3 class="poster-name">Следопыт</h3>
+          <p class="poster-tagline">500 Битсов</p>
+          <div class="stamp"><span class="label">Цена</span><span class="amount">449 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Выгоднее «Разведчика» на 10%</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('500 Битсов', '449 ₽')">Купить Битсы</button>
+        </article>
+
+        <article class="poster bits" data-product="1000 Битсов" data-price="849 ₽">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Кошелёк</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 10.5c0-1.4 1.3-2.2 3-2.2s3 .9 3 2.1c0 2.8-6 1.6-6 4.3 0 1.3 1.3 2.1 3 2.1s3-.8 3-2.1"/></svg></div>
+          <h3 class="poster-name">Охотник</h3>
+          <p class="poster-tagline">1000 Битсов</p>
+          <div class="stamp"><span class="label">Цена</span><span class="amount">849 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Выгоднее «Разведчика» на 15%</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('1000 Битсов', '849 ₽')">Купить Битсы</button>
+        </article>
+
+        <article class="poster bits" data-product="2500 + 250 Битсов" data-price="1990 ₽">
+          <span class="nail"></span>
+          <span class="bonus-tag">+250 бонус</span>
+          <p class="poster-eyebrow">Кошелёк · Выгодно</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9 10.5c0-1.4 1.3-2.2 3-2.2s3 .9 3 2.1c0 2.8-6 1.6-6 4.3 0 1.3 1.3 2.1 3 2.1s3-.8 3-2.1"/></svg></div>
+          <h3 class="poster-name">Легенда</h3>
+          <p class="poster-tagline">2500 + 250 бонусных Битсов</p>
+          <div class="stamp"><span class="label">Цена</span><span class="amount">1990 ₽</span></div>
+          <ul class="poster-perks">
+            <li>Лучшая цена за Битс на весь каталог</li>
+          </ul>
+          <button class="btn poster-cta" type="button" onclick="openCheckout('2500 + 250 Битсов', '1990 ₽')">Купить Битсы</button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= КЕЙСЫ ================= -->
+  <section class="catalog" id="cases">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Сундук · Кейсы</p>
+        <h2>Испытай удачу</h2>
+        <p>Кейсы открываются прямо на сервере командой <strong>/cases</strong> за Битсы — здесь только витрина того, что можно выиграть.</p>
+      </div>
+
+      <div class="grid cases">
+
+        <article class="poster case" data-product="Кейс «Салун»">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Сундук</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="10" rx="1"/><path d="M3 9l2-5h14l2 5M12 13v3"/></svg></div>
+          <h3 class="poster-name">«Салун»</h3>
+          <p class="poster-tagline">Стартовый набор косметики</p>
+          <ul class="poster-perks">
+            <li>Цвета ника и мелкие титулы</li>
+            <li>Шанс на партиклы начального уровня</li>
+          </ul>
+          <div class="crate-odds"><span>Цена в игре</span><span>150 Битсов</span></div>
+        </article>
+
+        <article class="poster case" data-product="Кейс «Дилижанс»">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Сундук</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="10" rx="1"/><path d="M3 9l2-5h14l2 5M12 13v3"/></svg></div>
+          <h3 class="poster-name">«Дилижанс»</h3>
+          <p class="poster-tagline">Средний набор, реже дубли</p>
+          <ul class="poster-perks">
+            <li>Редкие титулы и цвета</li>
+            <li>Повышенный шанс уникальных партиклов</li>
+          </ul>
+          <div class="crate-odds"><span>Цена в игре</span><span>400 Битсов</span></div>
+        </article>
+
+        <article class="poster case" data-product="Кейс «Легенда Запада»">
+          <span class="nail"></span>
+          <p class="poster-eyebrow">Сундук · Редкий</p>
+          <div class="poster-emblem"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="10" rx="1"/><path d="M3 9l2-5h14l2 5M12 13v3"/></svg></div>
+          <h3 class="poster-name">«Легенда Запада»</h3>
+          <p class="poster-tagline">Только лимитированная косметика</p>
+          <ul class="poster-perks">
+            <li>Эксклюзивные партиклы сезона</li>
+            <li>Без дублей ниже редкого уровня</li>
+          </ul>
+          <div class="crate-odds"><span>Цена в игре</span><span>900 Битсов</span></div>
+        </article>
+
+      </div>
+
+      <p class="cases-note">Битсов не хватает? <strong>Пополни кошелёк выше</strong> — открытие происходит только в игре, покупка кейсов напрямую за ₽ не предусмотрена.</p>
+    </div>
+  </section>
+
+  <section class="catalog" id="rules" style="padding-bottom:96px;">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:0;">
+        <p class="eyebrow">Правила лавки</p>
+        <h2>Честно, как перед шерифом</h2>
+        <p style="margin-top:18px;">Покупки в лавке — это внешний вид, статус и удобство. Ни один товар не даёт преимущества в бою, ускоренного заработка внутриигровой валюты или доступа к контенту, недоступному бесплатным игрокам иначе как по времени. Возвраты и спорные ситуации решаются через тикет в Discord. Оплата картой и СБП обрабатывается платёжным партнёром — данные карты лавка не хранит.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>WANTED SMP</h4>
+        <p>Вестерн-PvP на пяти жизнях в неделю. Полная потеря лута, никаких клеймов на землю — только репутация, которую ты заслужил сам.</p>
+        <p style="font-family:var(--font-label); font-size:12.5px; color:var(--cream);">mc.wantedmc.fun</p>
+      </div>
+      <div>
+        <h4>Лавка</h4>
+        <ul class="footer-links">
+          <li><a href="#ranks">Ранги</a></li>
+          <li><a href="#bits">Битсы</a></li>
+          <li><a href="#cases">Кейсы</a></li>
+          <li><a href="#rules">Правила лавки</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Сообщество</h4>
+        <ul class="footer-links">
+          <li><a href="https://discord.gg/" target="_blank" rel="noopener">Discord-сервер</a></li>
+          <li><a href="#top">Наверх</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 WANTED SMP. Независимый проект, не связан с Mojang/Microsoft.</span>
+      <span>Косметика ≠ сила</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= Модалка "оформления" ================= -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="Закрыть">×</button>
+    <p class="poster-eyebrow" style="text-align:left;">Оформление</p>
+    <h3 id="modalProduct">Товар</h3>
+    <p class="modal-price" id="modalPrice">Цена</p>
+    <p>
+      Приём онлайн-оплаты сейчас настраивается через платёжного партнёра. Чтобы получить покупку уже сегодня — напиши в Discord-тикет, укажи ник и выбранный товар, и мы оформим её вручную в течение дня.
+    </p>
+    <a class="btn btn-gold" href="https://discord.gg/" target="_blank" rel="noopener">Оформить в Discord</a>
+    <button class="btn btn-outline" id="modalCancel" type="button">Закрыть</button>
+  </div>
+</div>
+
+<div class="toast" id="toast">IP скопирован: mc.wantedmc.fun</div>
+
+<script>
+  // Мобильное меню
+  const menuToggle = document.getElementById('menuToggle');
+  const primaryNav = document.getElementById('primaryNav');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = primaryNav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+    menuToggle.textContent = isOpen ? '×' : '☰';
+  });
+  primaryNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    primaryNav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    menuToggle.textContent = '☰';
+  }));
+
+  // Копирование IP
+  const ipCopy = document.getElementById('ipCopy');
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  ipCopy.addEventListener('click', async () => {
+    const ip = 'mc.wantedmc.fun';
+    try {
+      await navigator.clipboard.writeText(ip);
+    } catch (e) {
+      // без Clipboard API — тихо игнорируем, IP всё равно виден на кнопке
+    }
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 2200);
+  });
+
+  // Модалка оформления заказа
+  // TODO(интеграция): здесь вместо ссылки на Discord нужно подставить
+  // реальный buy-link / виджет EasyDonate или Tebex, когда магазин будет подключён.
+  // Товар и цена уже прокидываются в модалку — их можно передать в параметрах ссылки.
+  const overlay = document.getElementById('checkoutOverlay');
+  const modalProduct = document.getElementById('modalProduct');
+  const modalPrice = document.getElementById('modalPrice');
+
+  function openCheckout(product, price){
+    modalProduct.textContent = product;
+    modalPrice.textContent = 'Цена: ' + price;
+    overlay.classList.add('open');
+  }
+  function closeCheckout(){
+    overlay.classList.remove('open');
+  }
+  document.getElementById('modalClose').addEventListener('click', closeCheckout);
+  document.getElementById('modalCancel').addEventListener('click', closeCheckout);
+  overlay.addEventListener('click', (e) => { if(e.target === overlay) closeCheckout(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeCheckout(); });
+</script>
+
+</body>
+</html>
